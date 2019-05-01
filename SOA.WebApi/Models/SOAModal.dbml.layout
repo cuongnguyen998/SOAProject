@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="SOAModal">
+  <DataContextMoniker Name="/SOAModalDataContext" />
+  <nestedChildShapes>
+    <classShape Id="f37fbfe1-1491-4044-80da-cd18d30dd28a" absoluteBounds="2.875, 1.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SOAModalDataContext/Student" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6704f602-396e-4e16-a3b8-5255ad5b229b" absoluteBounds="2.8899999999999997, 1.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
