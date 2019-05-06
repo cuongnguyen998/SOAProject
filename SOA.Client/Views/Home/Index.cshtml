@@ -15,8 +15,6 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="~/Assets/css/style.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
@@ -27,6 +25,11 @@
             crossorigin="anonymous"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/Assets/css/jquery.fileupload.css">
+
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="~/Assets/css/style.css">
 </head>
 
 <body class="" id="body">
@@ -71,7 +74,7 @@
 
                     <span class="btn btn-success fileinput-button">
                         <i class="glyphicon glyphicon-plus"></i>
-                        <span>Add files...</span>
+                        <span>Select files...</span>
                         <!-- The file input field used as target for the file upload widget -->
                         <input id="fileupload" type="file" name="files[]" multiple>
                     </span>
@@ -98,12 +101,12 @@
                 <div class="img__person col-md-6">
                     <table class="table table-bordered">
                         <thead>
-                            <th>STT</th>
-                            <th>MSSV</th>
-                            <th>Họ tên</th>
-                            <th>Lớp</th>
-                            <th>Ngày điểm danh</th>
-                            <th>Cài đặt</th>
+                        <th>STT</th>
+                        <th>MSSV</th>
+                        <th>Họ tên</th>
+                        <th>Lớp</th>
+                        <th>Ngày điểm danh</th>
+                        <th>Cài đặt</th>
                         </thead>
                         <tbody id="tbSinhVien"></tbody>
                     </table>
@@ -131,7 +134,7 @@
             });
         });
     </script>
- 
+
     <script src="~/Assets/js/jquery.fileupload-image.js"></script>
 
     <script src="~/Assets/js/student.js"></script>
@@ -139,6 +142,38 @@
     <script src="~/Assets/js/studentServices.js"></script>
 
     <script src="~/Assets/js/main.js"></script>
+
+    <script src="~/Assets/js/vendor/jquery.ui.widget.js"></script>
+    <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+    <script src="~/Assets/js/jquery.iframe-transport.js"></script>
+    <!-- The basic File Upload plugin -->
+    <script src="~/Assets/js/jquery.fileupload.js"></script>
+
+    <script>
+        $(function () {
+            'use strict';
+            // Change this to the location of your server-side upload handler:
+            var url = window.location.hostname === 'blueimp.github.io' ?
+                '//jquery-file-upload.appspot.com/' : 'server/php/';
+            $('#fileupload').fileupload({
+                url: url,
+                dataType: 'json',
+                done: function (e, data) {
+                    $.each(data.result.files, function (index, file) {
+                        $('<p/>').text(file.name).appendTo('#files');
+                    });
+                },
+                progressall: function (e, data) {
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    $('#progress .progress-bar').css(
+                        'width',
+                        progress + '%'
+                    );
+                }
+            }).prop('disabled', !$.support.fileInput)
+                .parent().addClass($.support.fileInput ? undefined : 'disabled');
+        });
+    </script>
 
 </body>
 
