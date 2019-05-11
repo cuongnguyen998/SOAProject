@@ -2,10 +2,10 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="SOAModal">
   <DataContextMoniker Name="/SOAModalDataContext" />
   <nestedChildShapes>
-    <classShape Id="f37fbfe1-1491-4044-80da-cd18d30dd28a" absoluteBounds="2.875, 1.125, 2, 1.5785953776041666">
+    <classShape Id="b6896b48-7f06-45c1-8bb2-68c11ac31e3c" absoluteBounds="3.25, 1.375, 2, 1.5785953776041666">
       <DataClassMoniker Name="/SOAModalDataContext/Student" />
       <nestedChildShapes>
-        <elementListCompartment Id="6704f602-396e-4e16-a3b8-5255ad5b229b" absoluteBounds="2.8899999999999997, 1.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="d0021d94-bcc6-4c23-b1d2-04bd7abbbbc4" absoluteBounds="3.265, 1.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

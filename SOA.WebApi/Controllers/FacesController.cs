@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.Description;
 using System.Web.Http.Cors;
+using System.Drawing;
 
 namespace SOA.WebApi.Controllers
 {
@@ -45,15 +46,32 @@ namespace SOA.WebApi.Controllers
             return students;
         }
 
-        public string Get(string imagePath)
-        {
-            return "";
-        }
+        //GET:api/faces/2019-05-02
+        //public List<Student> Get(Student student)
+        //{
+        //    List<Student> attendList = new List<Student>();
+        //    var reslt = from st in db.Students
+        //                where st.AttendDate == student.AttendDate
+        //                select st;
+        //    foreach (var item in reslt)
+        //    {
+        //        attendList.Add(item);
+        //    }
+        //    return attendList;
+
+        //}
 
         // POST: api/Faces
         [ResponseType(typeof(Student))]
-        public void Post(List<Student> listStudent)
+        public IHttpActionResult Post(Student student)
         {
+            if (student == null)
+            {
+                return NotFound();
+            }
+            db.Students.InsertOnSubmit(student);
+            db.SubmitChanges();
+            return Ok(student);
             //DefineStudentInStudentList(listStudent,"");
         }
         async Task<List<Person>> DefineStudentInStudentList(List<Student> listStudent)
@@ -93,6 +111,7 @@ namespace SOA.WebApi.Controllers
 
             string groupImagePath = @"E:\SOA\FaceIdentifyProject\SOA.WebApi\Images\group.jpg";
 
+
             using (Stream stream = File.OpenRead(groupImagePath))
             {
                 var faces = await client.DetectAsync(stream);
@@ -115,32 +134,11 @@ namespace SOA.WebApi.Controllers
             }
             return listPerson;
         }
-        async void TrainingModel(string personGroupId)
-        {
-            await client.TrainPersonGroupAsync(personGroupId);
-
-            TrainingStatus status = null;
-            while (true)
-            {
-                status = await client.GetPersonGroupTrainingStatusAsync(personGroupId);
-                if (status.Status != Status.Running)
-                {
-                    break;
-                }
-                await Task.Delay(1000);
-            }
-        }
-        async void RegisterFaceToCorrectStudent(string imagePath, string personGroupId, CreatePersonResult person)
-        {
-            using (Stream stream = File.OpenRead(imagePath))
-            {
-                await client.AddPersonFaceAsync(personGroupId, person.PersonId, stream);
-            }
-        }
-
+        
         // PUT: api/Faces/5
         public void Put(int id, [FromBody]string value)
         {
+
         }
 
         // DELETE: api/Faces/5

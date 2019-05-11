@@ -49,9 +49,16 @@ function parseJson(result){
   return dssv_detect;
 }
 
-function CreateTable(dssv_detect){
-	var tbody = document.getElementById('tbSinhVien');
+function createTable(dssv_detect){
+  console.log(dssv_detect)
   for (var i=0;i<dssv_detect.length;i++){
+    var d = new Date();
+    var day = d.getDate();
+    var month = d.getMonth()+1;
+    var year = d.getFullYear();
+    var hours = d.getHours();
+    var minute = d.getMinutes();
+    var strDate = `${day}/${month}/${year} vào lúc ${hours}:${minute}`
 		//template String
 		content +=`
 		<tr>
@@ -59,19 +66,25 @@ function CreateTable(dssv_detect){
 			<td>${dssv_detect[i].mssv}</td>
 			<td>${dssv_detect[i].hoten}</td>
 			<td>${dssv_detect[i].lop}</td>
-			<td>${new Date()}</td>
+			<td>${strDate}</td>
 			<td>
-				<button class="btn btn-success" onclick="Update(${i})">
-				Sửa
+				<button class="btn btn-danger" onclick="remove(${i})">
+				Xóa
 				</button>
 			</td>
 		</tr>
 		`
   }
-  $('#tdSinhVein').html(content);
+  $('#tbSinhVien').html(content);
 }
 
 $(document).ready(function(){
-  var client = new studentService();
-  client.layDanhSachSinhVienDiemDanh();
+  $('#check_attend').click(function(){
+
+    $('#body').addClass('darker');
+    $('.loader').removeClass('d-none');
+
+    var client = new studentService();
+    client.layDanhSachSinhVienDiemDanh();
+  });
 });

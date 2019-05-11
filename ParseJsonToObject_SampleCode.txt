@@ -1,0 +1,13 @@
+public Plan GetPlanObjectFromJSON(string jsonString)
+        {
+            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+            List<Plan> planList = (List<Plan>)javaScriptSerializer.Deserialize(jsonString, typeof(List<Plan>));
+            if (planList != null)
+            {
+                foreach (Plan item in planList)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }

@@ -220,6 +220,7 @@
     <Compile Include="Controllers\ConstPara.cs" />
     <Compile Include="Controllers\FacesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoadFilesController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
