@@ -44,5 +44,16 @@ namespace SOA.WebApi.Controllers
             }
             return View(absenceTrackings);
         }
+
+        public ActionResult IndexView()
+        {
+            return View();
+        }
+        public string ProcessUpload(HttpPostedFileBase file)
+        {
+            //Process
+            file.SaveAs(Server.MapPath("~/Images/" + file.FileName));
+            return "/Images/" + file.FileName;
+        }
     }
 }
