@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="SOAServerConnectionString-Web.config Connection String" description="SOAServerConnectionString Connection String used in web.config by the application to access the database." defaultValue="Data Source=yangbit.database.windows.net;Initial Catalog=SOAServer;User ID=yang;Password=Khoa123456789;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\SOA\\FaceIdentifyProject\\SOA\.WebApi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SOAServerConnectionString']/@connectionString" />
+  </parameter>
+</parameters>

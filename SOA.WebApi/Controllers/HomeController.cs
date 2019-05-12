@@ -12,7 +12,6 @@ namespace SOA.WebApi.Controllers
         FaceServiceClient client = new FaceServiceClient("e2a92091771a473b88b2c8599836f7c7");
         public ActionResult Index()
         {
-
             return View();
         }
     }

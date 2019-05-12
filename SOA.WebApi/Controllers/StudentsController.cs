@@ -10,14 +10,13 @@ namespace SOA.WebApi.Controllers
 {
     public class StudentsController : ApiController
     {
-        FaceServiceClient client = new FaceServiceClient(ConstPara.subcriptionKey);
+        private SOAModelDataContext db = new SOAModelDataContext();
 
 
         // GET: api/Students
-        public IEnumerable<Student> Get()
+        public IEnumerable<AbsenceTracking> Get()
         {
-
-            return new List<Student>();
+            return db.AbsenceTrackings.ToList();
         }
 
         // GET: api/Students/5

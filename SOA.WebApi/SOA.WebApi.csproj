@@ -217,20 +217,19 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AbsenceTracksController.cs" />
     <Compile Include="Controllers\ConstPara.cs" />
     <Compile Include="Controllers\FacesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoadFilesController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Attendance.cs" />
-    <Compile Include="Models\SOAModal.designer.cs">
+    <Compile Include="Models\SOAModel.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SOAModal.dbml</DependentUpon>
+      <DependentUpon>SOAModel.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -253,7 +252,6 @@
     <Content Include="Images\Anh Dung\31161020474.png" />
     <Content Include="Images\Bich Tuyen\31161020232.png" />
     <Content Include="Images\Dang Khoa\31161026676.png" />
-    <Content Include="Images\group.jpg" />
     <Content Include="Images\Hanh Mai\31161024677.png" />
     <Content Include="Images\Hieu My\31161021131.png" />
     <Content Include="Images\Hoai Linh\31161023705.png" />
@@ -305,14 +303,15 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="Models\SOAModal.dbml">
+    <Content Include="Models\SOAModel.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>SOAModal.designer.cs</LastGenOutput>
+      <LastGenOutput>SOAModel.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Models\SOAModal.dbml.layout">
-      <DependentUpon>SOAModal.dbml</DependentUpon>
+    <None Include="Models\SOAModel.dbml.layout">
+      <DependentUpon>SOAModel.dbml</DependentUpon>
     </None>
+    <None Include="Properties\PublishProfiles\SOAFaceRegconizeService - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -336,6 +335,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AbsenceTracks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
