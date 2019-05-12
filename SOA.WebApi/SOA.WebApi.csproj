@@ -235,6 +235,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Assets\css\jquery.fileupload.css" />
+    <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\js\jquery.fileupload.js" />
+    <Content Include="Assets\js\jquery.iframe-transport.js" />
+    <Content Include="Assets\js\main.js" />
+    <Content Include="Assets\js\student.js" />
+    <Content Include="Assets\js\studentServices.js" />
+    <Content Include="Assets\js\Vendor\jquery.ui.widget.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -252,6 +260,7 @@
     <Content Include="Images\Anh Dung\31161020474.png" />
     <Content Include="Images\Bich Tuyen\31161020232.png" />
     <Content Include="Images\Dang Khoa\31161026676.png" />
+    <Content Include="Images\group.jpg" />
     <Content Include="Images\Hanh Mai\31161024677.png" />
     <Content Include="Images\Hieu My\31161021131.png" />
     <Content Include="Images\Hoai Linh\31161023705.png" />
@@ -272,6 +281,7 @@
     <Content Include="Images\Minh Tri\31161026355.png" />
     <Content Include="Images\Nhu Khue\31161024815.png" />
     <Content Include="Images\Nhu Khue\Khue.jpg" />
+    <Content Include="Images\QSX001481.JPG" />
     <Content Include="Images\Quoc Cuong\31161021612.png" />
     <Content Include="Images\Sy Hiep\31161024043.png" />
     <Content Include="Images\testImg.jpg" />
@@ -332,6 +342,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\IndexView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
