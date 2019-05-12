@@ -101,4 +101,3 @@ E:\SOA\FaceIdentifyProject\SOA.WebApi\obj\Debug\SOA.WebApi.pdb
 E:\SOA\FaceIdentifyProject\SOA.WebApi\bin\System.Web.Cors.dll
 E:\SOA\FaceIdentifyProject\SOA.WebApi\bin\System.Web.Http.Cors.dll
 E:\SOA\FaceIdentifyProject\SOA.WebApi\bin\System.Web.Http.Cors.xml
-E:\SOA\FaceIdentifyProject\SOA.WebApi\obj\Debug\SOA.WebApi.csprojAssemblyReference.cache

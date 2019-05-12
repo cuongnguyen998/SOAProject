@@ -1,23 +1,23 @@
-﻿using System;
+﻿using Microsoft.ProjectOxford.Face;
+using Microsoft.ProjectOxford.Face.Contract;
+using SOA.WebApi.Models;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
-using Microsoft.ProjectOxford.Face;
-using Microsoft.ProjectOxford.Face.Contract;
-using SOA.WebApi.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web.Http.Description;
-using System.Web.Http.Cors;
-using System.Drawing;
 using System.Web;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using System.Web.Http.Description;
 
 namespace SOA.WebApi.Controllers
 {
-    [EnableCors(origins: "*", headers: "*",methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class FacesController : ApiController
     {
         FaceServiceClient client = new FaceServiceClient(ConstPara.subcriptionKey, "https://southeastasia.api.cognitive.microsoft.com/face/v1.0");
@@ -85,6 +85,33 @@ namespace SOA.WebApi.Controllers
 
         //}
 
+        //POST: api/Faces?fileName
+        [ResponseType(typeof(AbsenceTracking))]
+        public async Task<List<AbsenceTracking>> Get(string fileName)
+        {
+            List<AbsenceTracking> students = new List<AbsenceTracking>();
+            if (fileName != "")
+            {
+                string filePath = HttpContext.Current.Server.MapPath("~/Images/" + fileName);
+                
+                List<Person> listp = await DefineStudentInStudentList(filePath, "groupone");
+                foreach (Person item in listp)
+                {
+                    AbsenceTracking student = new AbsenceTracking
+                    {
+                        Id = item.Name,
+                        AttendDate = DateTime.Now
+                    };
+                    students.Add(student);
+                    db.AbsenceTrackings.InsertOnSubmit(student);
+                    db.SubmitChanges();
+                }
+            }
+            return students;
+
+        }
+
+
         // POST: api/Faces
         [ResponseType(typeof(AbsenceTracking))]
         public async Task<List<AbsenceTracking>> Post()
@@ -118,9 +145,11 @@ namespace SOA.WebApi.Controllers
             List<Person> listp = await DefineStudentInStudentList(filePath, "groupone");
             foreach (Person item in listp)
             {
-                AbsenceTracking student = new AbsenceTracking();
-                student.Id = item.Name;
-                student.AttendDate = DateTime.Now;
+                AbsenceTracking student = new AbsenceTracking
+                {
+                    Id = item.Name,
+                    AttendDate = DateTime.Now
+                };
                 students.Add(student);
                 db.AbsenceTrackings.InsertOnSubmit(student);
                 db.SubmitChanges();
@@ -133,13 +162,13 @@ namespace SOA.WebApi.Controllers
             List<Person> listPerson = new List<Person>();
             //Tạo 1 groupPerson mới
             string personGroupId = personGroup;
-            
+
             //var check = await client.GetPersonGroupAsync(personGroupId);
             //if (check == null)
             //{
             //    await client.CreatePersonGroupAsync(personGroupId, "BI001");
             //}
-            
+
             //foreach (Student item in listStudent)
             //{
             //    CreatePersonResult student = await client.CreatePersonAsync(personGroupId, item.Id);
@@ -188,7 +217,7 @@ namespace SOA.WebApi.Controllers
             }
             return listPerson;
         }
-        
+
         // PUT: api/Faces/5
         public void Put(int id, [FromBody]string value)
         {
